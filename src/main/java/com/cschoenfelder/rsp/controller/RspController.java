@@ -20,19 +20,20 @@ import org.springframework.web.bind.annotation.*;
         produces = MediaType.APPLICATION_JSON_VALUE)
 public class RspController implements IRspController {
 
-    private RspService rspService;
+    private final RspService rspService;
 
     public RspController(@Autowired RspService rspService) {
         this.rspService = rspService;
     }
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<RspResult> getRspResult(@RequestBody RspRequest rspRequest) {
        return ResponseEntity.ok(rspService.getRspResult(rspRequest.getUserChoice()));
     }
 
     @ExceptionHandler({HttpMessageNotReadableException.class})
-    public ResponseEntity handleChoiceValidation() {
+    public ResponseEntity<RspErrorResult> handleChoiceValidation() {
         RspErrorResult rspErrorResult = new RspErrorResult("please enter a valid choice, allowed values are ROCK, SCISSOR od STONE", "value.invalid");
         return new ResponseEntity<>(rspErrorResult, HttpStatus.BAD_REQUEST);
     }
