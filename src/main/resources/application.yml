@@ -1,0 +1,8 @@
+
+spring:
+  application:
+    name: rock-scissor-stone-service
+  pid:
+    file: service.pid
+  jmx:
+    enabled: false
