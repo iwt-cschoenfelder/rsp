@@ -13,7 +13,7 @@ public class RspGameEngine {
     /**
      * rsp game data structure
      */
-    private Map<Choice, Choice> choiceToBeatenByChoiceMap = new HashMap<>(){{
+    private final Map<Choice, Choice> choiceToBeatenByChoiceMap = new HashMap<>(){{
         put(Choice.ROCK, Choice.PAPER);
         put(Choice.PAPER, Choice.SCISSOR);
         put(Choice.SCISSOR, Choice.ROCK);

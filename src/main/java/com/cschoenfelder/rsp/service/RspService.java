@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class RspService {
 
-    private RspComputerPlayer rspComputerPlayer;
-    private RspGameEngine rspGameEngine;
+    private final RspComputerPlayer rspComputerPlayer;
+    private final RspGameEngine rspGameEngine;
 
 
     public RspService(@Autowired RspComputerPlayer rspComputerPlayer, @Autowired RspGameEngine rspGameEngine) {
