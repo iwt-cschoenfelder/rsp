@@ -15,7 +15,7 @@ public class RspGameEngine {
     /**
      * rsp game data structure
      */
-    private final Map<Choice, List<Choice>> choiceToBeatenByChoiceMap = new HashMap<>(){{
+    private final Map<Choice, List<Choice>> choiceToBeatenByChoicesMap = new HashMap<>(){{
         put(Choice.ROCK, Arrays.asList(Choice.PAPER, Choice.WELL));
         put(Choice.PAPER, Arrays.asList(Choice.SCISSOR));
         put(Choice.SCISSOR, Arrays.asList(Choice.ROCK, Choice.WELL));
@@ -24,7 +24,7 @@ public class RspGameEngine {
 
 
     public RspResult determineRspResult(Choice userChoice, Choice computerChoice) {
-        List<Choice> beatenByChoices  = choiceToBeatenByChoiceMap.get(userChoice);
+        List<Choice> beatenByChoices  = choiceToBeatenByChoicesMap.get(userChoice);
         GameResult gameResultFromUserPerspective  = beatenByChoices.contains(computerChoice) ? GameResult.LOST : (computerChoice == userChoice ? GameResult.DRAW : GameResult.WON);
         return new RspResult(userChoice, computerChoice, gameResultFromUserPerspective);
     }
