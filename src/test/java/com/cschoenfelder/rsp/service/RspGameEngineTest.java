@@ -26,6 +26,12 @@ class RspGameEngineTest {
     }
 
     @Test
+    public void testDetermineRspResult_ROCK_LOST2() {
+        RspResult result = classUnderTest.determineRspResult(Choice.ROCK, Choice.WELL);
+        assertThat(result.getUserGameResult(), is(GameResult.LOST));
+    }
+
+    @Test
     public void testDetermineRspResult_ROCK_DRAW() {
         RspResult result = classUnderTest.determineRspResult(Choice.ROCK, Choice.ROCK);
         assertThat(result.getUserGameResult(), is(GameResult.DRAW));
@@ -57,6 +63,32 @@ class RspGameEngineTest {
         assertThat(result.getUserGameResult(), is(GameResult.WON));
     }
 
+    // WELL
+
+    @Test
+    public void testDetermineRspResult_WELL_LOST() {
+        RspResult result = classUnderTest.determineRspResult(Choice.WELL, Choice.PAPER);
+        assertThat(result.getUserGameResult(), is(GameResult.LOST));
+    }
+
+    @Test
+    public void testDetermineRspResult_WELL_DRAW() {
+        RspResult result = classUnderTest.determineRspResult(Choice.WELL, Choice.WELL);
+        assertThat(result.getUserGameResult(), is(GameResult.DRAW));
+    }
+
+    @Test
+    public void testDetermineRspResult_WELL_WON() {
+        RspResult result = classUnderTest.determineRspResult(Choice.WELL, Choice.ROCK);
+        assertThat(result.getUserGameResult(), is(GameResult.WON));
+    }
+
+    @Test
+    public void testDetermineRspResult_WELL_WON2() {
+        RspResult result = classUnderTest.determineRspResult(Choice.WELL, Choice.SCISSOR);
+        assertThat(result.getUserGameResult(), is(GameResult.WON));
+    }
+
     // PAPER
 
     @Test
@@ -74,6 +106,12 @@ class RspGameEngineTest {
     @Test
     public void testDetermineRspResult_PAPER_WON() {
         RspResult result = classUnderTest.determineRspResult(Choice.PAPER, Choice.ROCK);
+        assertThat(result.getUserGameResult(), is(GameResult.WON));
+    }
+
+    @Test
+    public void testDetermineRspResult_PAPER_WON2() {
+        RspResult result = classUnderTest.determineRspResult(Choice.PAPER, Choice.WELL);
         assertThat(result.getUserGameResult(), is(GameResult.WON));
     }
 }

@@ -3,7 +3,7 @@ package com.cschoenfelder.rsp.service;
 import java.util.Random;
 
 public enum Choice {
-    ROCK, SCISSOR, PAPER;
+    ROCK, SCISSOR, PAPER, WELL;
 
     private static final Random random = new Random();
 
